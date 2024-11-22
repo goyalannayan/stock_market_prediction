@@ -1,12 +1,11 @@
 # Stock Market Predictor 📈  
 
-A simple machine learning project to predict stock market trends using historical data. This project uses **Linear Regression** to forecast stock prices and **Logistic Regression** to classify trends (e.g., up or down).  
+A simple machine learning project to predict stock market trends using historical data. This project uses **Random Forest** to forecast stock prices. 
 
 ---
 
 ## Features  
-- Predict stock prices with Linear Regression  
-- Classify market trends with Logistic Regression  
+- Predict stock prices with Random Forest 
 
 ---
 
@@ -20,4 +19,4 @@ A simple machine learning project to predict stock market trends using historica
 ## Getting Started  
     1. Clone the repository.  
    ```bash
-   git clone https://github.com/HimanshuKumar6565/Satta_Bazaar_Predictor 
+   git clone https://github.com/goyalannayan/stock_market_prediction
