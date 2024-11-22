@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Price Prediction</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* General Reset and Body Styling */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(45deg, #FF007F, #6A4CFF);  /* Gradient background */
+            color: white;
+            overflow-x: hidden;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 50px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            margin-top: 80px;
+            color: #fff;
+        }
+
+        h2 {
+            font-size: 28px;
+            font-weight: 600;
+            text-align: center;
+            margin-top: 20px;
+            color: #fff;
+            transition: 0.5s ease-in-out;
+        }
+
+        /* Form Styling */
+        form {
+            max-width: 500px;
+            margin: 40px auto;
+            background: rgba(0, 0, 0, 0.4);  /* Slight transparency for the form */
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4);
+        }
+
+        label {
+            font-size: 18px;
+            color: #fff;
+            margin: 10px 0;
+            display: block;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        input[type="date"],
+        input[type="number"],
+        button {
+            width: 100%;
+            padding: 14px;
+            margin: 8px 0;
+            border-radius: 8px;
+            border: none;
+            font-size: 16px;
+            background-color: #333;
+            color: white;
+            outline: none;
+            transition: 0.3s ease-in-out;
+        }
+
+        input[type="date"]:focus,
+        input[type="number"]:focus {
+            background-color: #555;
+        }
+
+        button {
+            background-color: #FF007F;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 25px;
+            padding: 16px;
+        }
+
+        button:hover {
+            background-color: #6A4CFF;
+            transform: scale(1.1);
+            box-shadow: 0 4px 15px rgba(255, 0, 127, 0.5);
+        }
+
+        .error {
+            color: #FF6347;  /* Tomato Red for errors */
+            text-align: center;
+            font-size: 18px;
+        }
+
+        .prediction {
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 30px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+        /* Hover effects for form elements */
+        input[type="date"]:hover,
+        input[type="number"]:hover {
+            background-color: #444;
+            box-shadow: 0 4px 10px rgba(255, 0, 127, 0.3);
+        }
+
+        /* Small screen responsiveness */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 36px;
+            }
+
+            form {
+                padding: 20px;
+                width: 90%;
+            }
+
+            input[type="date"],
+            input[type="number"],
+            button {
+                padding: 12px;
+                font-size: 14px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Stock Price Prediction</h1>
+    
+    <form method="POST" action="/predict">
+        <label for="Date">Date:</label>
+        <input type="date" name="Date" id="Date" required><br>
+
+        <label for="Open">Open Price:</label>
+        <input type="number" name="Open" id="Open" required><br>
+
+        <label for="High">High Price:</label>
+        <input type="number" name="High" id="High" required><br>
+
+        <label for="Low">Low Price:</label>
+        <input type="number" name="Low" id="Low" required><br>
+
+        <label for="Adj Close">Adj Close Price:</label>
+        <input type="number" name="Adj Close" id="Adj Close" required><br>
+
+        <label for="Volume">Volume:</label>
+        <input type="number" name="Volume" id="Volume" required><br>
+
+        <button type="submit">Predict</button>
+    </form>
+
+    {% if prediction is not none %}
+        <div class="prediction">
+            <h2>Predicted Stock Price: ${{ prediction }}</h2>
+        </div>
+    {% elif error %}
+        <h2 class="error">Error: {{ error }}</h2>
+    {% endif %}
+</body>
+</html>
